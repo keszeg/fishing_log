@@ -1,11 +1,8 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-//import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
 
-const geistSans = Geist({ subsets: ["latin"], variable: '--font-sans' });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: '--font-mono' });
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: 'My Fishing Dashboard',
@@ -30,17 +27,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        {children}
-        {/* <Analytics /> */}
-      </body>
-    </html>
+    <>
+      <Header />
+      {children}
+      {/* <Analytics /> */}
+      <Footer />
+    </>
   )
 }
